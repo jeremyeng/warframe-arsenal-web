@@ -27,8 +27,18 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: 'gatsby-source-pg',
+      options: {
+        typeName: 'WarframeArsenal',
+        fieldName: 'warframeArsenal',
+        connectionString: 'postgres:///warframe_arsenal',
+        schema: 'warframe_arsenal_public',
+        refetchInterval: 60, // Refetch data every 60 seconds
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
   ],
-}
+};
