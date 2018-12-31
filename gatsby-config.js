@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -32,7 +36,8 @@ module.exports = {
       options: {
         typeName: 'WarframeArsenal',
         fieldName: 'warframeArsenal',
-        connectionString: 'postgres:///warframe_arsenal',
+        // eslint-disable-next-line prettier/prettier
+        connectionString: `postgres://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@${process.env.DATABASE_URL}:${process.env.DATABASE_PORT}/${process.env.DATABASE_NAME}?ssl=1`,
         schema: 'warframe_arsenal_public',
         refetchInterval: 60, // Refetch data every 60 seconds
       },
