@@ -1,6 +1,7 @@
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
+const path = require('path');
 
 module.exports = {
   siteMetadata: {
@@ -40,6 +41,13 @@ module.exports = {
         connectionString: `postgres://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@${process.env.DATABASE_URL}:${process.env.DATABASE_PORT}/${process.env.DATABASE_NAME}?ssl=${process.env.DATABASE_USE_SSL}`,
         schema: 'warframe_arsenal_public',
         refetchInterval: 60, // Refetch data every 60 seconds
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        src: path.join(__dirname, 'src'),
+        pages: path.join(__dirname, 'src/pages'),
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

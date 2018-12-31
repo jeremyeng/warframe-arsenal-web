@@ -3,5 +3,36 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
+const path = require(`path`);
 
-// You can delete this file if you're not using it
+exports.createPages = async ({ actions, graphql }) => {
+  const { data } = await graphql(`
+    query {
+      warframeArsenal {
+        allWarframes {
+          edges {
+            node {
+              buildableId
+              warframe
+              shield
+              health
+              armor
+              energy
+              imageName
+            }
+          }
+        }
+      }
+    }
+  `);
+  // console.log(data);
+  data.warframeArsenal.allWarframes.edges.forEach(({ node }) => {
+    actions.createPage({
+      path: `/warframe/${node.buildableId}`,
+      component: path.resolve(`./src/templates/warframe.js`),
+      context: {
+        buildableId: node.buildableId,
+      },
+    });
+  });
+};
