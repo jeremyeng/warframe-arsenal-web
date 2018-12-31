@@ -37,7 +37,7 @@ module.exports = {
         typeName: 'WarframeArsenal',
         fieldName: 'warframeArsenal',
         // eslint-disable-next-line prettier/prettier
-        connectionString: `postgres://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@${process.env.DATABASE_URL}:${process.env.DATABASE_PORT}/${process.env.DATABASE_NAME}?ssl=1`,
+        connectionString: `postgres://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@${process.env.DATABASE_URL}:${process.env.DATABASE_PORT}/${process.env.DATABASE_NAME}?ssl=${process.env.DATABASE_USE_SSL}`,
         schema: 'warframe_arsenal_public',
         refetchInterval: 60, // Refetch data every 60 seconds
       },
