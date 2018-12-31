@@ -9,7 +9,6 @@ export default ({ data }) => {
     imageName,
     ...stats
   } = data.warframeArsenal.warframeByBuildableId;
-  console.log(warframe);
   return <BuildableDetail name={warframe} imageUrl={imageName} stats={stats} />;
 };
 

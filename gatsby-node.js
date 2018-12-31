@@ -25,7 +25,6 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `);
-  // console.log(data);
   data.warframeArsenal.allWarframes.edges.forEach(({ node }) => {
     actions.createPage({
       path: `/warframe/${node.buildableId}`,
