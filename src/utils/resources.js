@@ -1,3 +1,3 @@
 export const staticAssetsUrl = (path = '') => {
-  return `${process.env.STATIC_ASSETS_URL}/${path}`;
+  return `https://cdn.warframestat.us/img/${path}`;
 };
